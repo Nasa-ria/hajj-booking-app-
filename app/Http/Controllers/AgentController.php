@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\AgentCollection;
-use App\Http\Resources\AgentResource;
 use App\Models\Agent;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use App\Http\Resources\AgentResource;
+use App\Http\Resources\AgentCollection;
 use Illuminate\Support\Facades\Storage;
 
 // controller fro the agentform created it using php artisan make:nameof controller ---resouce

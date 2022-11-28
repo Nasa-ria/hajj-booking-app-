@@ -29,7 +29,7 @@
 </div>
 
 <!-- display agent -->
-
+{{-- 
       <div>
         <ul class="recent">
             <li class="recent_list"><a href='#'>Recently Added</a></li>
@@ -43,22 +43,23 @@
                   @foreach ($agents as $agent)
                 
                   <div class="row ">
-                      <div class="col"> 
-                        
-                        <div class="card" style="max-width:400px;">
+                      <div class="col-sm-5">  
+                        <div class="card" style="max-width:320px;">
                           <div class="row g-0">
                             <div class="col-sm-5">
                                  <img src="{{ asset('storage/images/agents/profile/'.$agent->profile) }}" class="card-img-top h-100 " alt="...">
                               </div>
-                             <div class="col-sm-7">
-                              <div class="card-body">
+
+                             <div class="col-sm-5">
+
+                               <div class="card-body">
                                   <h5 class="card-title">{{$agent->name}}</h5>
                                   <p class="card-text">{{Str::limit($agent->description,90,$end='...')}}</p>
                                   <a  href="/singlepost/{{$agent->id}}">View Profile</a>
                                   </div>
                               </div>
                             </div>
-                        </div>
+                         </div> 
                       </div>
                      </div>
                     
@@ -67,8 +68,59 @@
                         @else
                         <p>No agent has sign in yet</p>              
                         @endif
-              </div>
+              </div> --}}
+      
               
+
+
+     {{-- test --}}
+
+
+              <div>
+                <ul class="recent">
+                    <li class="recent_list"><a href='#'>Recently Added</a></li>
+                   <li class="recent_list"><a href="#">Browse all</a></li>
+              
+                </ul>
+              </div>
+                      <div class="card_display">
+                        <div class="card-group">
+                          @if(count($agents)>0)
+                          @foreach ($agents as $agent)
+                        
+                          <div class="row">
+                               <div class="col" style="margin-left: 100px; margin-bottom: 50px;">  
+                                <div class="card" style="max-width:320px;"> 
+                                    <div class="row">
+                                      <div class="col" >
+                                           <img src="{{ asset('storage/images/agents/profile/'.$agent->profile) }}" class="card-img-top h-100 " alt="...">
+                                        </div>
+                                        <div class="col"> 
+
+                                          <div class="card-body">
+                                             <h5 class="card-title">{{$agent->name}}</h5>
+                                             <p class="card-text">{{Str::limit($agent->description,90,$end='...')}}</p>
+                                             <a  href="/singlepost/{{$agent->id}}">View Profile</a>
+                                             </div>
+                                         
+                                        </div>
+                                      </div>                             
+                                      
+                                    </div>                                
+                              </div>
+                             
+                            
+                        </div>
+                           @endforeach
+                                @else
+                                <p>No agent has sign in yet</p>              
+                                @endif
+                      </div> 
+
+
+
+
+  {{-- end test --}}
              
  <!-- carousel -->
  <div id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel" class="slide">

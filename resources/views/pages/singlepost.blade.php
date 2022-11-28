@@ -24,7 +24,7 @@
                     <div class="img_display">
                     {{-- loop through array of images .printing is as a string using json_decode --}}
                     @foreach (json_decode($agent->images) as $image)
-                    <img   src="{{ asset('storage/images/agents/trips/'.$image) }}" style="height:150px; width: 300px,border-radius:6px"; />
+                    <img   src="{{ asset('storage/images/agents/trips/'.$image) }}" style="height:200px; width: 300px; border-radius:30px"; />
                     @endforeach
                   </div>
             </div>

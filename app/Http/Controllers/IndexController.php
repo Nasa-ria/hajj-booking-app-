@@ -63,15 +63,20 @@ class IndexController extends Controller
         return redirect('/')->with('success','Booking was Successfully');
     }
 
+    //    add feild to the agent email 
+    // then u compare the emails then u fetch it
     public function  profile() {
 
        $user= auth()->user();
-       
-    //    $comment= auth()->user()->;
-       dump(new AgentCollection($user));
- 
-        // $comments = Comment::where('user', '=', id)->get();  
-        // return view('pages.profile');
+      $agent= $user-> agent == '1';
+      $email= $user-> email ;
+      if($agent){
+        $profile=Agent::where('email','=',$email)->get();
+        // $profile=DB::table('agents')->where('agent_id',$user->id)-get();
+        return $profile;
+      }else{
+        return " not profile has being created yet";
+      }
     } 
  
  }
