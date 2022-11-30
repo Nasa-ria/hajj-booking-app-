@@ -20,12 +20,13 @@ class UsersController extends Controller
  
     public function customLogin(Request $request)
     {
+        // dd($request ->all());
         $request->validate([
-            'name' => 'required',
+            'email' => 'required',
             'password' => 'required',
         ]);
-    
-        $credentials = $request->only('name', 'password');
+    //  dd($request ->all());
+        $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             return redirect()->intended('/')
                         ->withSuccess('Signed in');

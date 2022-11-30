@@ -19,7 +19,7 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-user fa-lg me-3 fa-fw"></i>
                     <div class="form-outline flex-fill mb-0">
-                      <input type="text" placeholder="Name" id="email" class="form-control" name="name" required
+                      <input type="text" placeholder="Name" id="email" class="form-control" name="email" required
                       autofocus>
                   @if ($errors->has('name'))
                   <span class="text-danger">{{ $errors->first('name') }}</span>

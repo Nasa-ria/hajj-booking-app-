@@ -6,6 +6,7 @@ use App\Models\Book;
 use App\Models\Agent;
 use App\Models\Comment;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\AgentCollection;
 
@@ -66,16 +67,17 @@ class IndexController extends Controller
     //    add feild to the agent email 
     // then u compare the emails then u fetch it
     public function  profile() {
-
-       $user= auth()->user();
-      $agent= $user-> agent == '1';
-      $email= $user-> email ;
-      if($agent){
-        $profile=Agent::where('email','=',$email)->get();
-        // $profile=DB::table('agents')->where('agent_id',$user->id)-get();
-        return $profile;
-      }else{
-        return " not profile has being created yet";
+       $user = auth()->user();
+    //    return($user);
+    //   $agent = $user-> agent == '1';
+      $email = $user-> email ;
+      if($email){
+        $files=Agent::where('email','=',$email)->get();
+    //     // $profile=DB::table('agents')->where('agent_id',$user->id)-get();
+    //     // return $file;
+        return view('pages.profile',['files'=>$files]);
+    //   }else{
+    //     return " not profile has being created yet";
       }
     } 
  

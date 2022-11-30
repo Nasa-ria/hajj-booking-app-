@@ -26,7 +26,7 @@ class Agent extends Model
 
 public function Agent()
 {
-    return $this->hasMany(Comment::class);
+    return $this->hasMany(Comment::class,'agent_id','id');
 }
 
 }

@@ -21,7 +21,7 @@ class Comment extends Model
     ];
     public function Comment()
 {
-    return $this->belongsTo(Agent::class);
+    return $this->belongsTo(Agent::class,'agent_id','id');
     // return $this->hasOne( 
     //     'Agent', 'agent_id', 
     // );

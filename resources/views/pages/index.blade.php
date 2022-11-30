@@ -90,10 +90,10 @@
                         
                           <div class="row">
                                <div class="col" style="margin-left: 100px; margin-bottom: 50px;">  
-                                <div class="card" style="max-width:320px;"> 
+                                <div class="card" style="max-width:450px;"> 
                                     <div class="row">
                                       <div class="col" >
-                                           <img src="{{ asset('storage/images/agents/profile/'.$agent->profile) }}" class="card-img-top h-100 " alt="...">
+                                           <img src="{{ asset('storage/app/agents/profile/'.$agent->profile) }}" class="card-img-top h-100 " alt="...">
                                         </div>
                                         <div class="col"> 
 

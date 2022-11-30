@@ -10,7 +10,7 @@
     <div class="col">
       <article class="single-blog">
         <div class="post-thumb">
-          <img src="{{ asset('storage/images/agents/profile/'.$agent->profile) }}"  alt="" class="postimg" style="height:700px";>
+          <img src="{{ asset('storage/app/public/images/agents/profile/'.$agent->profile) }}"  alt="" class="postimg" style="height:100px";>
         </div>
         <div class="post-content">
           <div class=" text-center text-uppercase">
@@ -24,7 +24,7 @@
                     <div class="img_display">
                     {{-- loop through array of images .printing is as a string using json_decode --}}
                     @foreach (json_decode($agent->images) as $image)
-                    <img   src="{{ asset('storage/images/agents/trips/'.$image) }}" style="height:200px; width: 300px; border-radius:30px"; />
+                    <img   src="{{ asset('storage/app/public/images/agents/trips/'.$image) }}" style="height:200px; width: 300px; border-radius:30px"; />
                     @endforeach
                   </div>
             </div>

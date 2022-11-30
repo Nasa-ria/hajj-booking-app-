@@ -1,6 +1,5 @@
-@if($user= Auth::check() && Auth::user()->agent == '1')
+{{-- @if($user= Auth::check() && Auth::user()->agent == '1') --}}
 {{-- <img src="{{asset('storage/images/agents/profile/'.Auth()->user()->profile) }}"/> --}}
-
 
 @extends('layouts.home')
 @section('content')
@@ -14,16 +13,16 @@
     <div class="col">
       <article class="single-blog">
         <div class="post-thumb">
-          
-          <img src="{{asset('storage/images/agents/profile/'.Auth()->user()->profile) }}"  alt="" class="postimg" style="height:700px";>
+          @foreach ($files as $file)
+          <img src="{{asset('storage/images/agents/profile/'.$file->profile) }}"  alt="" class="postimg" style="height:700px";>
         </div>
         <div class="post-content">
           <div class=" text-center text-uppercase">
           
-            <h1 class="post_headings">{{ Auth::user()->name }}</h1>
+            <h1 class="post_headings">{{ $file->name }}</h1>
           </div>
           <div class="entry-content">
-            <p>{{ Auth::user()->description }}  </p>
+            <p>{{$file->description}} </p>
            
             {{-- <div class="container">
                     <div class="img_display">
@@ -37,7 +36,7 @@
             <div class="action d-flex justify-content-between mt-2 align-items-center">
               <div class="reply px-4">
                   
-                  <small><a href="{{ route('agents.edit',Auth::user()->id) }}">Edit</a></small>
+                  <small><a href="{{ route('agents.edit',$file->id) }}">Edit</a></small>
                   <span class="dots"></span>
               </div>
 
@@ -54,16 +53,16 @@
           <div class="post-meta">
             <ul class="pull-left list-inline author-meta ml-3">
             
-              <li class="date"> <em>email::{{ Auth::user()->email }}</em></li>
-              <li class="date"> <em>contact::{{ Auth::user()->contact }}</em></li>
+              <li class="date"> <em>email::{{ $file->email }}</em></li>
+              <li class="date"> <em>contact::{{ $file->contact }}</em></li>
               
-              <li class="date"> <em>address::{{ Auth::user()->address}}</em></li>
-              <li class="date"> <em>location::{{ Auth::user()->location }}</em></li>
+              <li class="date"> <em>address::{{ $file->address}}</em></li>
+              <li class="date"> <em>location::{{ $file->location }}</em></li>
             <hr>
             <div class="post-meta">
               <ul class="pull-left list-inline author-meta">
-                <li class="author">By {{ Auth::user()->name }} </li>
-            <li class="date"><em>on</em>  {{ Auth::user()->created_at}}</li>
+                <li class="author">By {{ $file->name }} </li>
+            <li class="date"><em>on</em>  {{ $file->created_at}}</li>
               </div>
             <ul class="pull-right list-inline social-share d-flex flex-row align-items-center gap-1"  class="icon">
               <li><a href=""><i class="bi bi-facebook"></i></a></li>
@@ -75,6 +74,7 @@
           </div>
         </div>
       </article>
+      @endforeach
       @include('partials.comments')
 
 
@@ -101,5 +101,5 @@
 
 
 
-@endif
+{{-- @endif --}}
 
