@@ -24,14 +24,14 @@
           <div class="entry-content">
             <p>{{$file->description}} </p>
            
-            {{-- <div class="container">
+            <div class="container">
                     <div class="img_display">
-                    loop through array of images .printing is as a string using json_decode
-                    @foreach (json_decode( Auth()->user()->images ) as $image)
+                    {{-- loop through array of images .printing is as a string using json_decode --}}
+                    @foreach (json_decode ($file->images) as $image)
                     <img   src="{{ asset('storage/images/agents/trips/'.$image) }}" style="height:150px; width: 300px,border-radius:6px"; />
                     @endforeach
                   </div>
-            </div> --}}
+            </div>
          
             <div class="action d-flex justify-content-between mt-2 align-items-center">
               <div class="reply px-4">
@@ -75,6 +75,11 @@
         </div>
       </article>
       @endforeach
+
+
+      {{-- @foreach ($books as $book) --}}
+      @dump($books)
+       {{-- @endforeach --}}
       @include('partials.comments')
 
 

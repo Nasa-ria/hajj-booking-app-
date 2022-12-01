@@ -45,13 +45,14 @@ class IndexController extends Controller
     }
 
     public function storebookings(Request $request){
-        // dd($request->all());
+        dd($request->all());
         $this->validate($request,[
             'name'=>'required',
             'book_date'=>'required',
             'email'=>'required',
             'contact'=>'required',
             'location'=>'required',
+            'agent_id'=>'required',
         ]);
      
         $booking = new Book;
@@ -60,6 +61,8 @@ class IndexController extends Controller
         $booking-> location = $request->input('location');
         $booking-> email = $request->input('email');
         $booking-> contact  = $request->input('contact');
+        $booking-> book_id  = $request->input('contact');
+        $booking-> agent_id  = $request->input('agent_id');
         $booking->save();
         return redirect('/')->with('success','Booking was Successfully');
     }
@@ -68,19 +71,27 @@ class IndexController extends Controller
     // then u compare the emails then u fetch it
     public function  profile() {
        $user = auth()->user();
-    //    return($user);
-    //   $agent = $user-> agent == '1';
       $email = $user-> email ;
       if($email){
         $files=Agent::where('email','=',$email)->get();
-    //     // $profile=DB::table('agents')->where('agent_id',$user->id)-get();
-    //     // return $file;
-        return view('pages.profile',['files'=>$files]);
-    //   }else{
-    //     return " not profile has being created yet";
+        $books=Book::where('email','=',$email)->get();
+        return view('pages.profile',compact('files','books'));
+ 
       }
     } 
  
+    public function  bookFile() {
+        $user = auth()->user();
+       $email = $user-> email ;
+       if($email){
+         $files=Book::where('email','=',$email)->get();
+  
+         return view('pages.profile',compact('files','comments'));
+  
+       }
+     } 
+
+
  }
     
 

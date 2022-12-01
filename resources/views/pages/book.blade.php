@@ -3,7 +3,7 @@
 
                 @if (Auth::check()) {
                     {{-- // The user is logged in... --}}
-                
+                 <input type="hidden"  name="agent_id" value={{$id}}>
                 <div class="bg">
                     <div class="container  mt-5 mb-5">
                         <div class="card text-black" style="border-radius: 25px;">

@@ -38,6 +38,7 @@
                   <small>Translate</small>
                  @else
                  <small><a href="/book">book us now</a></small>
+                 <small><a href="{{ URL('/book'.$agent->id )}}">book us now</a></small>
                   <span class="dots"></span>
               </div>
 
