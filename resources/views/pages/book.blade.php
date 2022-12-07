@@ -3,7 +3,7 @@
 
                 @if (Auth::check()) {
                     {{-- // The user is logged in... --}}
-                 <input type="hidden"  name="agent_id" value={{$id}}>
+                    
                 <div class="bg">
                     <div class="container  mt-5 mb-5">
                         <div class="card text-black" style="border-radius: 25px;">
@@ -17,6 +17,8 @@
                         <form action="{{route('store-bookings')}}" method="post">
                         @csrf
                      
+                        <input type="hidden"  name="agent_id" value={{$agent->id}}>
+
                         <input type="text" class="form-control mt-3" id="name" name="name"  placeholder="name" required />
                         @if ($errors->has('name'))
                       <span class="text-danger">{{ $errors->first('name') }}</span>

@@ -34,7 +34,8 @@ name="password" required>
 </div>
 <div class="form-group mb-3">
     <div class="checkbox">
-    <label><input type="checkbox" name="agent" id="agent"> Agent</label>
+    <label><input type="checkbox" name="agent" id="agent" value='1' {{ old('agent', isset($agent) ? 'checked' : '') }}> Agent</label>
+
     </div>
     </div>
 <div class="form-group mb-3">
@@ -52,4 +53,7 @@ name="password" required>
 </div>
 </div>
 </main>
+
+
+
 @endsection

@@ -53,29 +53,40 @@ class UsersController extends Controller
             'agent' => '',
         ]);
             
-        $data = $request->all();
-        $check = $this->create($data);
+        // $data = $request->all();
+       
+        $user= new User();
+        $user-> name    = $request->input('name');
+        $user-> email    = $request->input('email');
+        $user-> password    =  Hash::make('password');
+        $user->agent= $request->has('agent');
+
+       $user->save();
+
+        // $check = $this->create($data);
           
         return redirect("/")->withSuccess('have signed-in');
     }
  
  
-    public function create(array $data)
-    {
-      return User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-        // 'agent' => $data['agent']
+    // public function create(array $data)
+    // {
+    //   return User::create([
+    //     'name' => $data['name'],
+    //     'email' => $data['email'],
+    //     'password' => Hash::make($data['password']),
+    //     'agent' => $data['agent']
 
-      ]);
-    }    
+    //   ]);
+    // }    
      
  
     public function dashboard()
     {
         if(Auth::check()){
             return view('/');
+        }else if(Auth:: check()&& Auth::user()->agent == '1'){
+            return redirect("profile");
         }
    
         return redirect("login")->withSuccess('are not allowed to access');

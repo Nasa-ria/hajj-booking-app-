@@ -35,7 +35,7 @@
             </form>
                 {{-- delete images --}}
                <div class="container">
-                          <form  action="{{ route('update-image') }}" method="post" >
+                          <form  action="{{ route('agents.destroy',$agent) }}" method="delete" >
                             @csrf
                             <p class="text-center">Trip Images</p>
                           <div class="img_display">
@@ -43,6 +43,7 @@
                           @foreach (json_decode($agent->images) as $image)
                             <div id="check_image">
                                 <input type="checkbox" id="myCheck" name="image[]" value={{$image}} onclick="check()" >
+                                {{-- <input type="checkbox" name="image[]" value="{{$image}}">  --}}
                                <label><img src="{{ asset('storage/images/agents/trips/'.$image) }}"  alt="img" style="height:8em; width: 100% "/> </label>
                             </div> 
                             @endforeach 

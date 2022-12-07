@@ -36,9 +36,6 @@ class CommentController extends Controller
 
 
     public function show()
-
-    
-
     {
         $comment = Comment::all();
 

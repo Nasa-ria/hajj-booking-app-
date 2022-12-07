@@ -20,11 +20,11 @@ Route::get('/signup', [UsersController::class, 'signup'])->name('register-user')
 Route::post('/custom-signup', [UsersController::class, 'customSignUp'])->name('register.custom'); 
 Route::get('/signout', [UsersController::class, 'signOut'])->name('signout');
 // Auth::routes();
-Route::get('/book',[IndexController::class,'book']);
+Route::get('/book/{id}',[IndexController::class,'book'])->name('book');
 
 
 // image deleting
-Route::post('/update-image',[IndexController::class,'update'])->name('update-image');
+Route::post('/delete-image',[IndexController::class,'delete'])->name('delete');
 // routes for the agentform
 Route::resource('agents', AgentController::class);
 

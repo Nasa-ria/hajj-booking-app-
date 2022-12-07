@@ -139,8 +139,12 @@ class AgentController extends Controller
 
     public function destroy(Request $request,$id)
     {
-        $agent = Agent::find($id);
-        $imagesArr = json_decode($agent->images);
-        dd($request->all());
+        // $agent = Agent::find($id);
+        // $imagesArr = json_decode($agent->images);
+        $data= $request->all();
+        return $data;
+        // foreach ($request->file('images') as $image){ 
+        // DB::table("images")->whereIn('',explode("image",$image))->delete();
+        // }
     }
 }

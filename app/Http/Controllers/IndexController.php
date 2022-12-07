@@ -31,8 +31,9 @@ class IndexController extends Controller
     public function  signin() {
         return view('pages.signin');
     } 
-    public function  book() {
-        return view('pages.book');
+    public function  book(Request $request ,$id) {
+        $agent = Agent::find($id);
+        return view('pages.book',['agent'=>$agent]);
     } 
 
     public function  singlepost( Request $request ,$id) 
@@ -45,7 +46,7 @@ class IndexController extends Controller
     }
 
     public function storebookings(Request $request){
-        dd($request->all());
+        // dd($request->all());
         $this->validate($request,[
             'name'=>'required',
             'book_date'=>'required',
@@ -53,6 +54,7 @@ class IndexController extends Controller
             'contact'=>'required',
             'location'=>'required',
             'agent_id'=>'required',
+            
         ]);
      
         $booking = new Book;
@@ -61,7 +63,6 @@ class IndexController extends Controller
         $booking-> location = $request->input('location');
         $booking-> email = $request->input('email');
         $booking-> contact  = $request->input('contact');
-        $booking-> book_id  = $request->input('contact');
         $booking-> agent_id  = $request->input('agent_id');
         $booking->save();
         return redirect('/')->with('success','Booking was Successfully');
@@ -90,6 +91,18 @@ class IndexController extends Controller
   
        }
      } 
+
+
+      public function delete(Request $request , $id){
+        // $agent = Agent::find($id);
+        // $imagesArr = json_decode($agent->images);
+        dd($request->all());
+    //     foreach ($request->file('images') as $image){ 
+    //     DB::table("images")->whereIn('',explode("image",$image))->delete();
+    //     }
+    //     return redirect('/profile')->with('success','image was Successfully');
+      }
+
 
 
  }

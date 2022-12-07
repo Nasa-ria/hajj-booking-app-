@@ -37,8 +37,8 @@
                   <span class="dots"></span>
                   <small>Translate</small>
                  @else
-                 <small><a href="/book">book us now</a></small>
-                 <small><a href="{{ URL('/book'.$agent->id )}}">book us now</a></small>
+                 {{-- <small><a href="/book">book us now</a></small> --}}
+                 <small><a href="{{ route('book',$agent->id ,[$agent->id])}}">book us now</a></small>
                   <span class="dots"></span>
               </div>
 

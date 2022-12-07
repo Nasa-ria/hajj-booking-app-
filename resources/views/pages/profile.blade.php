@@ -78,7 +78,7 @@
 
 
       {{-- @foreach ($books as $book) --}}
-      @dump($books)
+      {{-- @dump($books) --}}
        {{-- @endforeach --}}
       @include('partials.comments')
 

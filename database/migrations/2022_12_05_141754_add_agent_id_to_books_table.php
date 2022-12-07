@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddAgentIdToBookTable extends Migration
+class AddAgentIdToBooksTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,10 +14,9 @@ class AddAgentIdToBookTable extends Migration
     public function up()
     {
         Schema::table('books', function (Blueprint $table) {
-                $table->foreignId('agent_id')->constrained('agents');
-            
-            });
-        
+            $table->integer('book_id');
+          
+        });
     }
 
     /**
@@ -27,8 +26,9 @@ class AddAgentIdToBookTable extends Migration
      */
     public function down()
     {
+       
         Schema::table('books', function (Blueprint $table) {
-            $table->dropColumn('agent_id');
+            $table->dropColumn('book_id');
         });
     }
 }
