@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\File;
 use App\Http\Resources\AgentResource;
 use App\Http\Resources\AgentCollection;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Redirect;
 
 // controller fro the agentform created it using php artisan make:nameof controller ---resouce
 class AgentController extends Controller
@@ -141,8 +142,10 @@ class AgentController extends Controller
     {
         // $agent = Agent::find($id);
         // $imagesArr = json_decode($agent->images);
-        $data= $request->all();
-        return $data;
+        $data= $request->image;
+        $data->delete();
+      return Redirect::back()->with('success','Comment deleted successfully !'); 
+        
         // foreach ($request->file('images') as $image){ 
         // DB::table("images")->whereIn('',explode("image",$image))->delete();
         // }

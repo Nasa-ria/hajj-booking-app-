@@ -7,6 +7,7 @@ use App\Models\Agent;
 use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserCollection;
 use App\Http\Resources\AgentCollection;
 
@@ -68,18 +69,6 @@ class IndexController extends Controller
         return redirect('/')->with('success','Booking was Successfully');
     }
 
-    //    add feild to the agent email 
-    // then u compare the emails then u fetch it
-    public function  profile() {
-       $user = auth()->user();
-      $email = $user-> email ;
-      if($email){
-        $files=Agent::where('email','=',$email)->get();
-        $books=Book::where('email','=',$email)->get();
-        return view('pages.profile',compact('files','books'));
- 
-      }
-    } 
  
     public function  bookFile() {
         $user = auth()->user();
@@ -103,7 +92,9 @@ class IndexController extends Controller
     //     return redirect('/profile')->with('success','image was Successfully');
       }
 
+        public function comment(){
 
+        }
 
  }
     

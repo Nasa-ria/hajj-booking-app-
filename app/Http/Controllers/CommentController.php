@@ -29,7 +29,7 @@ class CommentController extends Controller
   
     public function destroy(Comment $comment)
     {
-        $agent = Agent::all();
+        Agent::all();
       $comment->delete();
       return Redirect::back()->with('success','Comment deleted successfully !'); 
     }

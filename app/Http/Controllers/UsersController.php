@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Agent;
+use App\Models\Comment;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -28,9 +30,37 @@ class UsersController extends Controller
     //  dd($request ->all());
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
+
+            $agents = auth()->user() && Auth::user()->agent == "1";
+
+            if($agents){
+                $user = auth()->user();
+                $email = $user-> email ;
+                if($email){
+                  $files=Agent::where('email','=',$email)->get();
+                //   if($files){
+                //     $id = $files-> id ;
+                //     $comments=Comment::where('agent_id','=',$id)->get();
+                //   }
+                // //dd("yeeeee");
+                return view('auth.profile',['files'=>$files]);
+
+                }
+            }
+
             return redirect()->intended('/')
                         ->withSuccess('Signed in');
-        }
+            }
+        // $agents = Auth::user()->agent == "1";
+
+        // dd($agents);
+
+        // if(Auth::user()->agent == '1'){
+        //     dd("yes");
+        //     // return view('/profile');
+        // }else if(Auth:: check()){
+        //     return view("/");
+        // }
    
         return redirect("/signin")->withSuccess('Login details are not valid');
     }
@@ -83,10 +113,8 @@ class UsersController extends Controller
  
     public function dashboard()
     {
-        if(Auth::check()){
-            return view('/');
-        }else if(Auth:: check()&& Auth::user()->agent == '1'){
-            return redirect("profile");
+        if(Auth:: check()){
+            return view("/");
         }
    
         return redirect("login")->withSuccess('are not allowed to access');
@@ -100,4 +128,18 @@ class UsersController extends Controller
         return Redirect('/signin');
     }
 
+
+    public function  profile() {
+        $user = auth()->user();
+        // dd($user);
+       $email = $user-> email ;
+       if($email){
+         $files=Agent::where('email','=',$email)->get();
+        //  $books=Book::where('email','=',$email)->get();
+ 
+         //dd("files");
+         return view('Auth.profile',compact('files'));
+  
+       }
+     } 
 }

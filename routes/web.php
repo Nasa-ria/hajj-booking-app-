@@ -41,6 +41,7 @@ Route::post('/store-bookings',[IndexController::class,'storebookings'])->name('s
 
 
 // rout for storing bookings
-Route::get('/profile',[IndexController::class,'profile'])->name('profile');
+Route::get('/profile',[UsersController::class,'profile'])->name('profile');
+// Route::get('/comment-profile',[CommentController::class,'comment']);
 
 

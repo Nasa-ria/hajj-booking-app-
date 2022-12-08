@@ -35,7 +35,7 @@
             </form>
                 {{-- delete images --}}
                <div class="container">
-                          <form  action="{{ route('agents.destroy',$agent) }}" method="delete" >
+                          <form  action="{{ route('agents.destroy',$agent->id) }}" method="delete" >
                             @csrf
                             <p class="text-center">Trip Images</p>
                           <div class="img_display">
@@ -49,7 +49,7 @@
                             @endforeach 
                              </div>
                    
-                      <input type="hidden" name="_method"  id="checking" value= {{ "checkInput()" }} >
+                      <input type="hidden"  id="checking" value= {{ "checkInput()" }} >
                       <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button type="submit" class="btn btn-danger btn-lg">delete</button>
                       </div>

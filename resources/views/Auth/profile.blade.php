@@ -1,10 +1,9 @@
-{{-- @if($user= Auth::check() && Auth::user()->agent == '1') --}}
-{{-- <img src="{{asset('storage/images/agents/profile/'.Auth()->user()->profile) }}"/> --}}
+
 
 @extends('layouts.home')
 @section('content')
 <div class="kotha-logo text-center">
-  {{-- <h1>Agency Name</h1> --}}
+  <h1>Agency Name</h1>
 </div>
 </header>
 <div class="kotha-default-content mt-5">
@@ -77,6 +76,8 @@
       @endforeach
 
 
+         {{-- <a href="/comment"$id>view comment</a> --}}
+
       {{-- @foreach ($books as $book) --}}
       {{-- @dump($books) --}}
        {{-- @endforeach --}}
@@ -106,5 +107,4 @@
 
 
 
-{{-- @endif --}}
 
