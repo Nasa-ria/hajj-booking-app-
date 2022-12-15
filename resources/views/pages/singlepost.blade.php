@@ -10,7 +10,7 @@
     <div class="col">
       <article class="single-blog">
         <div class="post-thumb">
-          <img src="{{ asset('storage/app/public/images/agents/profile/'.$agent->profile) }}"  alt="" class="postimg" style="height:100px";>
+          <img src="{{ asset('storage/app/public/images/agents/profile/'.$agent->profile) }}"  alt="" class="postimg" style="height:400px";>
         </div>
         <div class="post-content">
           <div class=" text-center text-uppercase">
@@ -35,7 +35,7 @@
                   
                   <small><a href="{{ route('agents.edit',$agent->id) }}">Edit</a></small>
                   <span class="dots"></span>
-                  <small>Translate</small>
+                  {{-- <small>Translate</small> --}}
                  @else
                  {{-- <small><a href="/book">book us now</a></small> --}}
                  <small><a href="{{ route('book',$agent->id ,[$agent->id])}}">book us now</a></small>
@@ -52,22 +52,23 @@
             </div>
         
       </div>        
-<hr>
+{{-- <hr> --}}
           <div class="post-meta">
-            <ul class="pull-left list-inline author-meta ml-3">
+            <ul class="d-flex justify-content-between">
             
               <li class="date"> <em>email::{{$agent->email}}</em></li>
               <li class="date"> <em>contact::{{$agent->contact}}</em></li>
               
               <li class="date"> <em>address::{{$agent->address}}</em></li>
               <li class="date"> <em>location::{{$agent->location}}</em></li>
+            </div>
             <hr>
             <div class="post-meta">
               <ul class="pull-left list-inline author-meta">
                 <li class="author">By {{$agent->name}} </li>
             <li class="date"><em>on</em>  {{$agent->created_at}}</li>
               </div>
-            <ul class="pull-right list-inline social-share d-flex flex-row align-items-center gap-1"  class="icon">
+            <ul class="pull-right list-inline social-share d-flex flex-row align-items-center gap-2"  class="icon">
               <li><a href=""><i class="bi bi-facebook"></i></a></li>
               <li><a href=""><i class="bi bi-twitter"></i></a></li>
               <li><a href=""><i class="bi bi-pinterest"></i></a></li>
