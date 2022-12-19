@@ -23,13 +23,13 @@
               <div class="d-flex flex-row align-items-center mb-4 mx-4">
                 
                 <div class="form-outline flex mb-0">
-                  <label for="images"> upload new Trip Image</label><br>
+                  <label for="images"> Upload new Trip Image</label><br>
                   <small class="place">*insert more than 4 images*</small>
                   <input type="file" class="form-control" name="images[]" multiple value="{{ $agent->images }}" >
                 </div>
               </div>
 
-              <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+              <div class="d-flex justify-content mx-4 mb-3 mb-lg-4">
                 <button type="submit" class="btn btn-primary btn-lg">Submit</button>
               </div>
             </form>
@@ -37,7 +37,7 @@
                <div class="container">
                           <form  action="{{ route('agents.destroy',$agent->id) }}" method="delete" >
                             @csrf
-                            <p class="text-center">Trip Images</p>
+                            <p class="">Select the trip image(s) you want to delete</p>
                           <div class="img_display">
                           
                           @foreach (json_decode($agent->images) as $image)
@@ -50,7 +50,7 @@
                              </div>
                    
                       <input type="hidden"  id="checking" value= {{ "checkInput()" }} >
-                      <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <div class="d-flex justify-content mx-4 mb-3 mb-lg-4">
                         <button type="submit" class="btn btn-danger btn-lg">delete</button>
                       </div>
                       </form>

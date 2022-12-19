@@ -59,10 +59,11 @@
                     </div>
                 </div>}
                 @else
-                    <h4> you need to sign in first</h4>
-                  <p>click to sign up</p>
+                    <h4 class="text-center mt-5"> You need to sign in first</h4>
+                  <p class="text-center">click to sign up  <br>
                   <a  href="{{ route('register-user') }}">SignUp</a>
        
+                  </p>
                 @endif
 
                 @endsection
