@@ -38,11 +38,6 @@ class UsersController extends Controller
                 $email = $user-> email ;
                 if($email){
                   $files=Agent::where('email','=',$email)->get();
-                //   if($files){
-                //     $id = $files-> id ;
-                //     $comments=Comment::where('agent_id','=',$id)->get();
-                //   }
-                // //dd("yeeeee");
                 return view('auth.profile',['files'=>$files]);
 
                 }
@@ -51,16 +46,7 @@ class UsersController extends Controller
             return redirect()->intended('/')
                         ->withSuccess('Signed in');
             }
-        // $agents = Auth::user()->agent == "1";
 
-        // dd($agents);
-
-        // if(Auth::user()->agent == '1'){
-        //     dd("yes");
-        //     // return view('/profile');
-        // }else if(Auth:: check()){
-        //     return view("/");
-        // }
    
         return redirect("/signin")->withSuccess('Login details are not valid');
     }
